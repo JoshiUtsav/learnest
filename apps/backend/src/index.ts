@@ -50,19 +50,7 @@ class Server {
     );
   }
 
-  public start() {
-    this.connectToDatabase()
-      .then(() => {
-        this.app.listen(PORT, () => {
-          logger.info(`Server is running at http://localhost:${PORT}`);
-        });
-      })
-      .catch((error) => {
-        logger.error(`Database connection error: ${(error as Error).message}`);
-      });
-  }
-
-  private async connectToDatabase() {
+  public async connectToDatabase() {
     try {
       await databaseConnect();
     } catch (error) {
@@ -70,8 +58,24 @@ class Server {
       throw new Error('Database connection failed');
     }
   }
+
+  // This method will be called in the serverless handler
+  public handleRequest(req: Request, res: Response) {
+    this.connectToDatabase()
+      .then(() => {
+        this.app(req, res); // Use Express app to handle the request
+      })
+      .catch((error) => {
+        logger.error(`Database connection error: ${(error as Error).message}`);
+        res.status(500).send('Database connection failed');
+      });
+  }
 }
 
-// Instantiate and start the server
+// Instantiate the server class
 const server = new Server();
-server.start();
+
+// Export the Vercel handler function
+export default function handler(req: Request, res: Response) {
+  server.handleRequest(req, res);
+}

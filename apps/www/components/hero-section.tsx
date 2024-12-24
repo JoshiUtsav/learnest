@@ -73,7 +73,8 @@ export default function HeroSection() {
 
     try {
       const response = await sendPostRequest<BetaResponse>({
-        url: "/api/beta-access",
+        url: "http://localhost:7000/api/beta-access",
+        data: { email },
       });
 
       setMessage({

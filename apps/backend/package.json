@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node --trace-warnings -r dotenv/config --experimental-json-modules dist/index.js\"",
     "start": "node dist/index.js",
-    "build": "tsc -b"
+    "build": "tsc -b",
+   "vercel-build": "yarn install && yarn build"
   },
   "keywords": [
     "express",
