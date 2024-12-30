@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { Link } from "react-router-dom";
 
 interface ButtonProps {
   children: ReactNode;
@@ -16,6 +15,8 @@ interface ButtonProps {
   right?: string;
   bottom?: string;
   left?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -33,6 +34,8 @@ const Button: React.FC<ButtonProps> = ({
   right,
   bottom,
   left,
+  target,
+  rel,
 }) => {
   const baseStyles =
     "font-medium rounded-md transition-colors duration-200 flex items-center justify-center";
@@ -52,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const positionStyles =
     position !== "static"
-      ? `${position} ${top} ${right} ${bottom} ${left}`
+      ? `${position} ${top || ""} ${right || ""} ${bottom || ""} ${left || ""}`
       : "";
 
   const buttonStyles = `
@@ -67,9 +70,15 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <Link to={href} className={buttonStyles} onClick={onClick}>
+      <a
+        href={href}
+        className={buttonStyles}
+        onClick={onClick}
+        target={target}
+        rel={rel}
+      >
         {children}
-      </Link>
+      </a>
     );
   }
 

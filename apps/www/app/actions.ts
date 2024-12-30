@@ -22,7 +22,6 @@ export const signUpAction = async (formData: FormData) => {
       "Email, password, and role are required"
     );
   }
-  console.log("User signed up");
 
   const { error } = await supabase.auth.signUp({
     email,
@@ -48,7 +47,6 @@ export const signUpAction = async (formData: FormData) => {
         lastName: formData.get("lastName")?.toString() || "",
       },
     });
-    console.log("user fucked");
     return encodedRedirect(
       "success",
       "/sign-up",

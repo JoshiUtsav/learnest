@@ -44,9 +44,9 @@ function AnimatedButton({
 }
 
 const benefits = [
-  { color: "bg-green-500", text: "Early Access", icon: "✨" },
-  { color: "bg-blue-500", text: "Priority Support", icon: "🎯" },
-  { color: "bg-purple-500", text: "Founder Benefits", icon: "👑" },
+  { text: "Early Access", icon: "✨" },
+  { text: "Priority Support", icon: "🎯" },
+  { text: "Founder Benefits", icon: "👑" },
 ] as const;
 
 export default function HeroSection() {
@@ -74,6 +74,7 @@ export default function HeroSection() {
     try {
       const response = await sendPostRequest<BetaResponse>({
         url: "/api/beta-access",
+        data: { email },
       });
 
       setMessage({
@@ -222,7 +223,7 @@ export default function HeroSection() {
                   className="flex items-center justify-center gap-1.5 sm:gap-2 bg-muted/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <span
-                    className={`h-1.5 w-1.5 sm:h-2 sm:w-2 ${benefit.color} rounded-full`}
+                    className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full`}
                     aria-hidden="true"
                   />
                   <span>{benefit.icon}</span>

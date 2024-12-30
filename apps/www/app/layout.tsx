@@ -1,4 +1,3 @@
-import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -54,7 +53,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
+    <html lang="en"  suppressHydrationWarning>
       <head>
         <meta
           name="viewport"

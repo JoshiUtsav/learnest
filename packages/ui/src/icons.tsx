@@ -15,7 +15,10 @@ export type IconName =
   | "user"
   | "logout"
   | "twitter"
-  | "down-arrow";
+  | "down-arrow"
+  | "sparkles"
+  | "arrow-right"
+  | "loader2";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconName;
@@ -43,6 +46,25 @@ const Icon: React.FC<IconProps> = ({ name, ...props }) => {
 
 const getPath = (name: IconName): JSX.Element => {
   switch (name) {
+    case "sparkles":
+      return (
+        <>
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+          <path d="M5 3v4" />
+          <path d="M19 17v4" />
+          <path d="M3 5h4" />
+          <path d="M17 19h4" />
+        </>
+      );
+    case "arrow-right":
+      return (
+        <>
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </>
+      );
+    case "loader2":
+      return <path d="M21 12a9 9 0 1 1-6.219-8.56" />;
     case "book-open":
       return (
         <>
@@ -149,10 +171,7 @@ const getPath = (name: IconName): JSX.Element => {
       );
     case "twitter":
       return (
-        <path
-          d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-          fill="currentColor"
-        />
+        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
       );
     case "down-arrow":
       return <path d="m6 9 6 6 6-6" />;

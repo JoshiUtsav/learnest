@@ -144,14 +144,14 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            {/* <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button asChild variant="ghost">
                 <Link href="/sign-in">Login</Link>
               </Button>
-            </motion.div>
+            </motion.div> */}
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button asChild className="group">
-                <Link href="/sign-up" className="flex items-center">
+                <Link href="/sign-in" className="flex items-center">
                   Join Beta Program
                   <motion.div
                     initial={{ x: 0 }}
